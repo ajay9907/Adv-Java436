@@ -26,15 +26,16 @@ public class MainClass {
 		// INSERTION
 
 		Student s = new Student();
-		s.setId(13);
+		s.setId(10);
 		s.setName("jay");
 		s.setAge(11);
 		s.setCity("Pune");
 
 		ss.persist(s);
+		System.out.println("Inserted Data");
 
 		tr.commit();
-		
+
 		ss.close();
 
 	}
