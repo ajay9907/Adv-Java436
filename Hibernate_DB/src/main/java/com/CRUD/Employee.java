@@ -1,4 +1,4 @@
-package com.pojo;
+package com.CRUD;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -5,17 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class MainClass {
-
+public class Delete {
 	public static void main(String[] args) {
-
-		// dbConnection
 
 		Configuration cfg = new Configuration();
 
 		cfg.configure("hibernate.cfg.xml");
 
-		cfg.addAnnotatedClass(Student.class);
+		cfg.addAnnotatedClass(Employee.class);
 
 		SessionFactory sf = cfg.buildSessionFactory();
 
@@ -23,19 +20,12 @@ public class MainClass {
 
 		Transaction tr = ss.beginTransaction();
 
-		// INSERTION
+		int id = 123;
+		Employee e = ss.get(Employee.class, id);
 
-		Student s = new Student();
-		s.setId(10);
-		s.setName("jay");
-		s.setAge(11);
-		s.setCity("Pune");
-
-		ss.persist(s);
-		System.out.println("Inserted Data");
-
+		ss.delete(e);
+		System.out.println("Deleted...!");
 		tr.commit();
-
 		ss.close();
 
 	}

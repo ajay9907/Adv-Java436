@@ -5,38 +5,28 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class MainClass {
-
+public class Update {
 	public static void main(String[] args) {
 
-		// dbConnection
-
 		Configuration cfg = new Configuration();
-
 		cfg.configure("hibernate.cfg.xml");
-
-		cfg.addAnnotatedClass(Student.class);
+		cfg.addAnnotatedClass(Employee.class);
 
 		SessionFactory sf = cfg.buildSessionFactory();
-
 		Session ss = sf.openSession();
-
 		Transaction tr = ss.beginTransaction();
 
-		// INSERTION
+		int id = 115;
+		Employee e = ss.get(Employee.class, id);
 
-		Student s = new Student();
-		s.setId(10);
-		s.setName("jay");
-		s.setAge(11);
-		s.setCity("Pune");
+		e.setName("Mahadev");
+		e.setCity("Wai");
+		e.setSalary(1200);
 
-		ss.persist(s);
-		System.out.println("Inserted Data");
+		ss.update(e);
 
 		tr.commit();
-
 		ss.close();
-
+		System.out.println("Updated ...!");
 	}
 }
